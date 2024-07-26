@@ -50,6 +50,7 @@ keyball_t keyball = {
 
     .scroll_mode = false,
     .scroll_div  = 0,
+    .scroll_temporally_horizontal = false,
 
     .pressing_keys = { BL, BL, BL, BL, BL, BL, 0 },
 };
@@ -223,7 +224,11 @@ __attribute__((weak)) void keyball_on_apply_motion_to_mouse_scroll(keyball_motio
     // New behavior
     switch (keyball_get_scrollsnap_mode()) {
         case KEYBALL_SCROLLSNAP_MODE_VERTICAL:
-            r->h = 0;
+            if (keyball.scroll_temporally_horizontal) {
+                r->v = 0;
+            } else {
+                r->h = 0;
+            }
             break;
         case KEYBALL_SCROLLSNAP_MODE_HORIZONTAL:
             r->v = 0;
@@ -667,6 +672,9 @@ bool process_record_kb(uint16_t keycode, keyrecord_t *record) {
             keyball_set_scroll_mode(record->event.pressed);
             // process_auto_mouse may use this in future, if changed order of
             // processes.
+            return true;
+        case SCRL_TEMP_HOR:
+            keyball.scroll_temporally_horizontal = record->event.pressed;
             return true;
     }
 

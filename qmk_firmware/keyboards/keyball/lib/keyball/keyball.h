@@ -102,6 +102,7 @@ enum keyball_keycodes {
     // wheel.
     SCRL_TO  = QK_KB_6, // Toggle scroll mode
     SCRL_MO  = QK_KB_7, // Momentary scroll mode
+    SCRL_TEMP_HOR  = QK_KB_16, // Momentary scroll mode(Horizontal)
     SCRL_DVI = QK_KB_8, // Increment scroll divider
     SCRL_DVD = QK_KB_9, // Decrement scroll divider
 
@@ -165,6 +166,8 @@ typedef struct {
     bool     scroll_mode;
     uint32_t scroll_mode_changed;
     uint8_t  scroll_div;
+    bool     scroll_temporally_horizontal;
+
 
 #if KEYBALL_SCROLLSNAP_ENABLE == 1
     uint32_t scroll_snap_last;
