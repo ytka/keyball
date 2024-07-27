@@ -102,13 +102,13 @@ enum keyball_keycodes {
     // wheel.
     SCRL_TO  = QK_KB_6, // Toggle scroll mode
     SCRL_MO  = QK_KB_7, // Momentary scroll mode
-    SCRL_TEMP_HOR  = QK_KB_16, // Momentary scroll mode(Horizontal)
     SCRL_DVI = QK_KB_8, // Increment scroll divider
     SCRL_DVD = QK_KB_9, // Decrement scroll divider
 
-    SSNP_VRT = QK_KB_13, // Set scroll snap mode as vertical
-    SSNP_HOR = QK_KB_14, // Set scroll snap mode as horizontal
-    SSNP_FRE = QK_KB_15, // Set scroll snap mode as disable (free scroll)
+    SSNP_VRT    = QK_KB_13, // Set scroll snap mode as vertical
+    SSNP_HOR    = QK_KB_14, // Set scroll snap mode as horizontal
+    SSNP_FRE    = QK_KB_15, // Set scroll snap mode as disable (free scroll)
+    SSNP_MO_TP  = QK_KB_16, // Momentary transpose scroll snap mode
 
     // Auto mouse layer control keycodes.
     // Only works when POINTING_DEVICE_AUTO_MOUSE_ENABLE is defined.
@@ -166,14 +166,13 @@ typedef struct {
     bool     scroll_mode;
     uint32_t scroll_mode_changed;
     uint8_t  scroll_div;
-    bool     scroll_temporally_horizontal;
-
 
 #if KEYBALL_SCROLLSNAP_ENABLE == 1
     uint32_t scroll_snap_last;
     int8_t   scroll_snap_tension_h;
 #elif KEYBALL_SCROLLSNAP_ENABLE == 2
     keyball_scrollsnap_mode_t scrollsnap_mode;
+    bool                      scrollsnap_mode_mo_transpose;
 #endif
 
     uint16_t       last_kc;

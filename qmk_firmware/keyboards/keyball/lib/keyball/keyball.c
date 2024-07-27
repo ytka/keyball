@@ -50,8 +50,6 @@ keyball_t keyball = {
 
     .scroll_mode = false,
     .scroll_div  = 0,
-    .scroll_temporally_horizontal = false,
-
     .pressing_keys = { BL, BL, BL, BL, BL, BL, 0 },
 };
 
@@ -224,14 +222,18 @@ __attribute__((weak)) void keyball_on_apply_motion_to_mouse_scroll(keyball_motio
     // New behavior
     switch (keyball_get_scrollsnap_mode()) {
         case KEYBALL_SCROLLSNAP_MODE_VERTICAL:
-            if (keyball.scroll_temporally_horizontal) {
+            if (keyball.scrollsnap_mode_mo_transpose) {
                 r->v = 0;
             } else {
                 r->h = 0;
             }
             break;
         case KEYBALL_SCROLLSNAP_MODE_HORIZONTAL:
-            r->v = 0;
+            if (keyball.scrollsnap_mode_mo_transpose) {
+                r->h = 0;
+            } else {
+                r->v = 0;
+            }
             break;
         default:
             // pass by without doing anything
@@ -591,6 +593,7 @@ void keyboard_post_init_kb(void) {
 #endif
 #if KEYBALL_SCROLLSNAP_ENABLE == 2
         keyball_set_scrollsnap_mode(c.ssnap);
+        keyball.scrollsnap_mode_mo_transpose = false;
 #endif
     }
 
@@ -673,10 +676,12 @@ bool process_record_kb(uint16_t keycode, keyrecord_t *record) {
             // process_auto_mouse may use this in future, if changed order of
             // processes.
             return true;
-        case SCRL_TEMP_HOR:
-            keyball.scroll_temporally_horizontal = record->event.pressed;
+#if KEYBALL_SCROLLSNAP_ENABLE == 2
+        case SSNP_MO_TP:
+            keyball.scrollsnap_mode_mo_transpose = record->event.pressed;
             return true;
     }
+#endif
 
     // process events which works on pressed only.
     if (record->event.pressed) {
