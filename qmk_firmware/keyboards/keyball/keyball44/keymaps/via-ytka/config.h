@@ -45,3 +45,5 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define KEYBALL_SCROLL_DIV_DEFAULT 5 // スクロール速度 (default: 4)
 
 #define COMBO_ONLY_FROM_LAYER 0
+
+#define TAPPING_TERM 200
