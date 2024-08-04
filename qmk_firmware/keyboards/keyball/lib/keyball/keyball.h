@@ -108,7 +108,8 @@ enum keyball_keycodes {
     SSNP_VRT    = QK_KB_13, // Set scroll snap mode as vertical
     SSNP_HOR    = QK_KB_14, // Set scroll snap mode as horizontal
     SSNP_FRE    = QK_KB_15, // Set scroll snap mode as disable (free scroll)
-    SSNP_MO_TP  = KC_RCTL,  // Momentary transpose scroll snap mode
+//    SSNP_MO_TP  = KC_RCTL,  // Momentary transpose scroll snap mode
+    SSNP_MO_TP  = KC_RSFT,  // Momentary transpose scroll snap mode
 
     // Auto mouse layer control keycodes.
     // Only works when POINTING_DEVICE_AUTO_MOUSE_ENABLE is defined.
