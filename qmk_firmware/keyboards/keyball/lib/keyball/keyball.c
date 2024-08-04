@@ -222,18 +222,26 @@ __attribute__((weak)) void keyball_on_apply_motion_to_mouse_scroll(keyball_motio
     // New behavior
     switch (keyball_get_scrollsnap_mode()) {
         case KEYBALL_SCROLLSNAP_MODE_VERTICAL:
+#ifdef KEYBALL_SCROLLSNAP_TP_ENABLE
             if (keyball.scrollsnap_mode_mo_transpose) {
                 r->v = 0;
             } else {
                 r->h = 0;
             }
+#else
+            r->h = 0;
+#endif
             break;
         case KEYBALL_SCROLLSNAP_MODE_HORIZONTAL:
+#ifdef KEYBALL_SCROLLSNAP_TP_ENABLE
             if (keyball.scrollsnap_mode_mo_transpose) {
                 r->h = 0;
             } else {
                 r->v = 0;
             }
+#else
+            r->v = 0;
+#endif
             break;
         default:
             // pass by without doing anything
@@ -593,7 +601,9 @@ void keyboard_post_init_kb(void) {
 #endif
 #if KEYBALL_SCROLLSNAP_ENABLE == 2
         keyball_set_scrollsnap_mode(c.ssnap);
+#ifdef KEYBALL_SCROLLSNAP_TP_ENABLE
         keyball.scrollsnap_mode_mo_transpose = false;
+#endif
 #endif
     }
 
@@ -676,12 +686,12 @@ bool process_record_kb(uint16_t keycode, keyrecord_t *record) {
             // process_auto_mouse may use this in future, if changed order of
             // processes.
             return true;
-#if KEYBALL_SCROLLSNAP_ENABLE == 2
+#ifdef KEYBALL_SCROLLSNAP_TP_ENABLE
         case SSNP_MO_TP:
             keyball.scrollsnap_mode_mo_transpose = record->event.pressed;
             return true;
-    }
 #endif
+    }
 
     // process events which works on pressed only.
     if (record->event.pressed) {

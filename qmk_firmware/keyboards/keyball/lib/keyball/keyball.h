@@ -108,8 +108,9 @@ enum keyball_keycodes {
     SSNP_VRT    = QK_KB_13, // Set scroll snap mode as vertical
     SSNP_HOR    = QK_KB_14, // Set scroll snap mode as horizontal
     SSNP_FRE    = QK_KB_15, // Set scroll snap mode as disable (free scroll)
-//    SSNP_MO_TP  = KC_RCTL,  // Momentary transpose scroll snap mode
+#ifdef KEYBALL_SCROLLSNAP_TP_ENABLE
     SSNP_MO_TP  = KC_RSFT,  // Momentary transpose scroll snap mode
+#endif
 
     // Auto mouse layer control keycodes.
     // Only works when POINTING_DEVICE_AUTO_MOUSE_ENABLE is defined.
@@ -173,7 +174,9 @@ typedef struct {
     int8_t   scroll_snap_tension_h;
 #elif KEYBALL_SCROLLSNAP_ENABLE == 2
     keyball_scrollsnap_mode_t scrollsnap_mode;
+#ifdef KEYBALL_SCROLLSNAP_TP_ENABLE
     bool                      scrollsnap_mode_mo_transpose;
+#endif
 #endif
 
     uint16_t       last_kc;
