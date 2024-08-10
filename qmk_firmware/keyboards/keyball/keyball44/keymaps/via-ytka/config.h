@@ -33,8 +33,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 //#    define RGBLIGHT_EFFECT_TWINKLE
 #endif
 
-#define DYNAMIC_KEYMAP_LAYER_COUNT 5
-
 #define TAP_CODE_DELAY 5
 
 //#define POINTING_DEVICE_AUTO_MOUSE_ENABLE
@@ -42,7 +40,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 
 #define OLED_TIMEOUT 30000 // ミリ秒
-#define DYNAMIC_KEYMAP_LAYER_COUNT 5
+#define DYNAMIC_KEYMAP_LAYER_COUNT 6
 #define KEYBALL_CPI_DEFAULT 1100 // マウス速度 (default: 500)
 #define KEYBALL_SCROLL_DIV_DEFAULT 5 // スクロール速度 (default: 4)
 
