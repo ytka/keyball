@@ -26,6 +26,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 enum {
     TD_J_LANG1,
     TD_Q_ESC,
+    TD_SP_LANG2,
 };
 
 // Tap Dance definitions
@@ -33,6 +34,7 @@ tap_dance_action_t tap_dance_actions[] = {
     // Tap once for Escape, twice for Caps Lockqlj
     [TD_J_LANG1] = ACTION_TAP_DANCE_DOUBLE(KC_J, KC_LNG1),
     [TD_Q_ESC] = ACTION_TAP_DANCE_DOUBLE(KC_Q, KC_ESCAPE),
+    [TD_SP_LANG2] = ACTION_TAP_DANCE_DOUBLE(KC_SPACE, KC_LNG2),
 };
 
 /*
