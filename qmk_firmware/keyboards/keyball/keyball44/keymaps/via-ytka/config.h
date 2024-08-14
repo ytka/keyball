@@ -46,6 +46,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #define COMBO_ONLY_FROM_LAYER 0
 
-#define TAPPING_TERM 500
+//#define TAPPING_TERM 500
 #define COMBO_SHOULD_TRIGGER 1
-#define PERMISSIVE_HOLD
+//#define PERMISSIVE_HOLD
