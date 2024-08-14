@@ -36,7 +36,7 @@ tap_dance_action_t tap_dance_actions[] = {
     [TD_J_LANG1] = ACTION_TAP_DANCE_DOUBLE(KC_J, KC_LNG1),
     [TD_Q_ESC] = ACTION_TAP_DANCE_DOUBLE(KC_Q, KC_ESCAPE),
     [TD_K_LANG2] = ACTION_TAP_DANCE_DOUBLE(KC_K, KC_LNG2),
-    [TD_Z_SFTZ] = ACTION_TAP_DANCE_DOUBLE(KC_Z, S(KC_Za)),
+    [TD_Z_SFTZ] = ACTION_TAP_DANCE_DOUBLE(KC_Z, S(KC_Z)),
 };
 
 /*
