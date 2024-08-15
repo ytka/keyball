@@ -49,5 +49,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 //#define TAPPING_TERM 500
 #define COMBO_SHOULD_TRIGGER 1
 //#define PERMISSIVE_HOLD
-#define    RETRO_TAPPING
-#define    TAPPING_FORCE_HOLD
+//
+// #define    RETRO_TAPPING  // modifierキーでないキーが入力されてしまう
+//// obsoleted// #define    TAPPING_FORCE_HOLD
+//#define QUICK_TAP_TERM 0
