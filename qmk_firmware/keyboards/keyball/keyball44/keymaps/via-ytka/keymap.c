@@ -24,19 +24,19 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #ifdef TAP_DANCE_ENABLE
 // Tap Dance declarations
 enum {
-    TD_J_LANG2,
     TD_Q_ESC,
     TD_RCMD_LANG2,
     TD_Z_SFTZ,
+    //TD_LB_RB,
 };
 
 // Tap Dance definitions
 tap_dance_action_t tap_dance_actions[] = {
     // Tap once for Escape, twice for Caps Lockqlj
-    [TD_J_LANG2] = ACTION_TAP_DANCE_DOUBLE(KC_J, KC_LNG2),
     [TD_Q_ESC] = ACTION_TAP_DANCE_DOUBLE(KC_Q, KC_ESCAPE),
     [TD_RCMD_LANG2] = ACTION_TAP_DANCE_DOUBLE(KC_RCMD, KC_LNG2),
     [TD_Z_SFTZ] = ACTION_TAP_DANCE_DOUBLE(KC_Z, S(KC_Z)),
+    //[TD_LB_RB] = ACTION_TAP_DANCE_DOUBLE(KC_LEFT_BRACKET, KC_RIGHT_BRACKET),
 };
 
 /*
@@ -101,23 +101,26 @@ void oledkit_render_info_user(void) {
 
 #ifdef COMBO_ENABLE
 //const uint16_t PROGMEM cb_bspc[] = {KC_P, KC_MINS, COMBO_END};
-const uint16_t PROGMEM cb_btn1[] = {KC_J, KC_K, COMBO_END};
+//const uint16_t PROGMEM cb_btn1[] = {KC_J, KC_K, COMBO_END};
 //const uint16_t PROGMEM cb_btn2[] = {KC_M, KC_COMM, COMBO_END};
 //const uint16_t PROGMEM cb_esc[] = {KC_TAB, KC_Q, COMBO_END};
-const uint16_t PROGMEM cb_btn2[] = {KC_J, KC_K, COMBO_END};
+//const uint16_t PROGMEM cb_btn2[] = {KC_J, KC_K, COMBO_END};
 //const uint16_t PROGMEM cb_lang1[] = {KC_S, KC_D, COMBO_END};
-//const uint16_t PROGMEMjk cb_lang2[] = {KC_D, KC_F, COMBO_END};
+//const uint16_t PROGMEM cb_lang2[] = {KC_D, KC_F, COMBO_END};
+//const uint16_t PROGMEM cb_lang1[] = {KC_LNG2, KC_SPC, COMBO_END};
 
 enum combos {
-    COMBO_BTN1,
-    COMBO_BTN2,
+    //COMBO_lang1,
+    //COMBO_BTN1,
+    //COMBO_BTN2,
     COMBO_COUNT
 };
 
 combo_t key_combos[] = {
+//    [COMBO_lang1] = COMBO(cb_lang1, KC_LNG1),
   //  COMBO(cb_bspc, KC_BSPC),
-    [COMBO_BTN1] = COMBO(cb_btn1, KC_BTN1),
-    [COMBO_BTN2] = COMBO(cb_btn2, KC_BTN2),
+    //[COMBO_BTN1] = COMBO(cb_btn1, KC_BTN1),
+    //[COMBO_BTN2] = COMBO(cb_btn2, KC_BTN2),
     //COMBO(cb_lang1, KC_LNG1),
     //COMBO(cb_lang2, KC_LNG2),
 
@@ -126,9 +129,10 @@ combo_t key_combos[] = {
   //  COMBO(cb_layer3, MO(3)),
 };
 
+
 // コンボの有効化をレイヤーごとに行う
+/*
 bool combo_should_trigger(uint16_t combo_index, combo_t *combo, uint16_t keycode, keyrecord_t *record) {
-    /* Disable combo `SOME_COMBO` on layer `_LAYER_A` */
     switch (combo_index) {
         case COMBO_BTN1:
             if (layer_state_is(0)) {
@@ -144,4 +148,5 @@ bool combo_should_trigger(uint16_t combo_index, combo_t *combo, uint16_t keycode
 
     return true;
 }
+*/
 #endif
